@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.rimi.roc.mapper.ICourseCategoryMapper">
+
+    <resultMap id="resultCategory" type="com.rimi.roc.pojo.CourseCategory">
+        <id column="id" property="id"/>
+        <result column="name" property="name"/>
+        <result column="icon" property="icon"/>
+        <result column="create_time" property="createTime"/>
+        <result column="cover_image" property="coverImage"/>
+        <result column="introduction" property="introduction"/>
+        <result column="priority" property="priority"/>
+    </resultMap>
+
+    <resultMap id="children" type="com.rimi.roc.pojo.CourseCategory" extends="resultCategory">
+        <collection property="children" ofType="com.rimi.roc.pojo.CourseCategory" resultMap="resultCategory"
+                    columnPrefix="c_"/>
+    </resultMap>
+    <select id="find" resultMap="children">
+        select c.*,
+            cc.id           c_id,
+            cc.name         c_name,
+            cc.icon         c_icon,
+            cc.priority     c_priority,
+            cc.cover_image  c_cover_image,
+            cc.create_time  c_create_time,
+            cc.introduction c_introduction
+            from  course_category c
+            left join roc.course_category cc
+            on  cc.parent = c.id
+            where c.parent = 0;
+    </select>
+
+
+</mapper>
