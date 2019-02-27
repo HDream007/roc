@@ -100,3 +100,68 @@ CREATE TABLE  watch_log  (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 SET FOREIGN_KEY_CHECKS = 1;
+
+
+-- ----------------------------
+-- Table structure for admin 管理员
+-- ----------------------------
+DROP TABLE IF EXISTS  admin ;
+CREATE TABLE  admin  (
+   id  bigint(20) unsigned NOT NULL AUTO_INCREMENT COMMENT 'ID',
+   username  varchar(20)  DEFAULT NULL COMMENT '用户名',
+   password varchar(70)  DEFAULT NULL COMMENT '密码',
+   super tinyint(1) unsigned default 1 Comment '是否是超级管理员',
+  PRIMARY KEY ( id )
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT '管理员';
+
+SET FOREIGN_KEY_CHECKS = 1;
+
+
+-- ----------------------------
+-- Table structure for role   角色
+-- ----------------------------
+DROP TABLE IF EXISTS  role ;
+CREATE TABLE  role  (
+   id  bigint(20) unsigned NOT NULL AUTO_INCREMENT COMMENT 'ID',
+   name  varchar(20)  DEFAULT NULL COMMENT '角色名称',
+  PRIMARY KEY ( id )
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 comment '角色表';
+
+SET FOREIGN_KEY_CHECKS = 1;
+
+-- ----------------------------
+-- Table structure for permission  权限
+-- ----------------------------
+DROP TABLE IF EXISTS  permission ;
+CREATE TABLE  permission  (
+   id  bigint(20) unsigned NOT NULL AUTO_INCREMENT COMMENT 'ID',
+   name  varchar(20)  DEFAULT NULL COMMENT '权限名称',
+  expression varchar(20)  DEFAULT NULL COMMENT '权限表达式',
+  PRIMARY KEY ( id )
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 comment '权限表';
+
+SET FOREIGN_KEY_CHECKS = 1;
+
+-- ----------------------------
+-- Table structure for admin_role  权限
+-- ----------------------------
+DROP TABLE IF EXISTS  admin_role ;
+CREATE TABLE  admin_role  (
+   admin_id  bigint(20) unsigned NOT NULL AUTO_INCREMENT COMMENT '管理员ID',
+   role_id bigint(20) unsigned NOT NULL AUTO_INCREMENT COMMENT '角色ID'
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 comment '管理员权限表';
+
+SET FOREIGN_KEY_CHECKS = 1;
+
+
+
+-- ----------------------------
+-- Table structure for role_permission  权限
+-- ----------------------------
+DROP TABLE IF EXISTS  role_permission ;
+CREATE TABLE  role_permission  (
+   permission_id  bigint(20) unsigned NOT NULL AUTO_INCREMENT COMMENT '权限ID',
+   role_id bigint(20) unsigned NOT NULL AUTO_INCREMENT COMMENT '角色ID'
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 comment '角色权限表';
+
+SET FOREIGN_KEY_CHECKS = 1;
