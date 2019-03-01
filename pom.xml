@@ -94,12 +94,13 @@
             <version>1.7.25</version>
         </dependency>
 
-        <!-- https://mvnrepository.com/artifact/net.oschina.zcx7878/fastdfs-client-java -->
+        <!-- https://mvnrepository.com/artifact/com.github.tobato/fastdfs-client -->
         <dependency>
-            <groupId>net.oschina.zcx7878</groupId>
-            <artifactId>fastdfs-client-java</artifactId>
-            <version>1.27.0.0</version>
+            <groupId>com.github.tobato</groupId>
+            <artifactId>fastdfs-client</artifactId>
+            <version>1.26.5</version>
         </dependency>
+
 
 
         <!--swagger ui-->
