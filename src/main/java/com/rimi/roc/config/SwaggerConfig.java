@@ -11,7 +11,7 @@ import springfox.documentation.spring.web.plugins.Docket;
 import springfox.documentation.swagger2.annotations.EnableSwagger2;
 
 /**
- * @author 惜-梦  接口
+ * @author 惜-梦  接口Api的配置信息
  * @description swagger ui
  * @date 2019-02-21 14:56
  */
@@ -22,7 +22,7 @@ public class SwaggerConfig {
     public Docket restApi(){
         return new Docket(DocumentationType.SWAGGER_2)
                 .select()
-                //在这个包下的才类产生接口
+                //在这个包下的类才产生接口
                 .apis(RequestHandlerSelectors.basePackage("com.rimi.roc.api"))
                 .paths(PathSelectors.any())
                 .build();

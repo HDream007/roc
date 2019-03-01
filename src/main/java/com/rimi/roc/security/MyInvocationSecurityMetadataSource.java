@@ -22,6 +22,7 @@ import java.util.List;
  * @description 启动时加载所有需要验证的权限
  * @date 2019-02-27 18:59
  */
+
 @Slf4j
 @Component
 public class MyInvocationSecurityMetadataSource implements FilterInvocationSecurityMetadataSource {

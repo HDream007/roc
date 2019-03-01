@@ -19,8 +19,9 @@ import org.springframework.security.web.access.intercept.FilterSecurityIntercept
  * @date 2019-02-19
  */
 @Configuration
-@EnableWebSecurity
+@EnableWebSecurity                     //安全配置适配器
 public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
+
     @Autowired
     private MyFailureHandler myFailureHandler;
     @Autowired
@@ -50,8 +51,13 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
-        http.csrf().disable()
-                .formLogin()
+
+                http
+                 //防止跨域请求 防止恶意攻击
+                .csrf()
+                 //禁用csrf
+                 .disable()
+                 .formLogin()
                 //登录失败跳转的的地址
                 .failureForwardUrl("/login")
                 //登录失败的处理器

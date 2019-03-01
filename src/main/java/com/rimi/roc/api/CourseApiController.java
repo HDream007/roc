@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.RestController;
  * @description 课程
  * @date 2019-02-22 16:11
  */
-@Api(tags = "课程API" ,description = "课程相关的操作")
+@Api(tags = "课程API" ,description = "课程相关的接口")
 @RestController
 public class CourseApiController {
 
@@ -29,6 +29,7 @@ public class CourseApiController {
 
     @GetMapping("/courseInfo/{id}")
     public RestVo getCourseIno(@PathVariable("id") Long id){
+
         return new RestVo.Builder().success().build();
     }
 
